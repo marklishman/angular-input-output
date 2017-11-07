@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-color-value',
+    selector: 'color-value',
     template: `
         <p>
             {{label}}:
@@ -15,13 +15,13 @@ export class ColorValueComponent implements OnInit {
     @Input() label: string;
     @Input() initValue = '0';
 
-    @Output('value') colorValueEvent: EventEmitter<string> = new EventEmitter();
+    @Output() colorValue: EventEmitter<string> = new EventEmitter();
 
     ngOnInit() {
         this.sendColor(this.initValue);
     }
 
     sendColor(color: string): void {
-        this.colorValueEvent.emit(color);
+        this.colorValue.emit(color);
     }
 }
